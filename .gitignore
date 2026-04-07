@@ -38,3 +38,5 @@ application.properties
 # Ignore environment files
 .env
 
+.DS_Store
+target/
