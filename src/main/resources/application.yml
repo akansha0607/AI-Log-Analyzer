@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: ai-log-analyzer
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/logdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+groq:
+  api:
+    key: ${GROQ_API_KEY}
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+  otlp:
+    tracing:
+      endpoint: https://www.comet.com/opik/api/v1/private/otel/v1/traces
+      headers:
+        Authorization: ${OPIK_API_KEY}
+        Comet-Workspace: ${OPIK_WORKSPACE}
+        projectName: ai-log-analyzer
+
+otel:
+  metrics:
+    exporter: none
+  logs:
+    exporter: none
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [traceId=%X{traceId:-}] [spanId=%X{spanId:-}] [%thread] %logger{36} - %msg%n"
