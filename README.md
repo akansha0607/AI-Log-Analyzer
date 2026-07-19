@@ -32,6 +32,10 @@ It helps developers quickly identify **root causes**, suggest **fixes**, and det
 - Ensures LLM responses are returned in strict **JSON format**  
 - Easily consumable by backend systems  
 
+### 🔭 MDC & OpenTelemetry Tracing
+- Adds unique traceId and spanId values to application logs using MDC
+- Creates spans for each stage of the RAG pipeline
+- Exports traces to Opik for latency and failure monitoring
 ---
 
 ## ⚙️ How It Works (Architecture)
